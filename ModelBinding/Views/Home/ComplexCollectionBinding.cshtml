@@ -1,0 +1,38 @@
+﻿@model List<AddressSummary>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Complex Collection Binding</title>
+</head>
+<body>
+
+     @if(Model.Count == 0)
+     {
+         <form action="ComplexCollectionBinding" method="post">
+             @for (var i = 0; i < 3; i++)
+             {
+                 <fieldset>
+                     <legend>Address @i</legend>
+                     <div> <label> City @i: </label>
+                         <input name="[@i].City" type="text"/></div>
+                     <div> <label>Country @i: </label>
+                         <input name="[@i].Country" type="text"/></div>
+
+                 </fieldset>
+             }
+                 <input type="submit" name="name" value="Submit" />
+         </form>                              
+             }
+             else{
+             foreach(var address in Model)
+             {
+                 <h2>City: @address.City</h2>
+                 <h2>Country: @address.Country</h2>
+             }
+        
+     }
+
+</body>
+</html>

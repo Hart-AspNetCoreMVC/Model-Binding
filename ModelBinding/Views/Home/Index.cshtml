@@ -1,0 +1,51 @@
+﻿
+@model Person
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Person";
+}
+
+
+<div class="bg-dark m-1 p-1 text-white">
+
+    <h2>Person</h2>
+</div>
+<table class="table table-sm table-striped table-bordered">
+    <tr>
+        <td>
+            <th>PersonId:</th>
+        </td>
+        <td>@Model.PersonID</td>
+    </tr>    <tr>
+        <td>
+            <th>First Name:</th>
+        </td>
+        <td>@Model.FirstName</td>
+    </tr>    <tr>
+        <td>
+            <th>Last Name:</th>
+        </td>
+        <td>@Model.LastName</td>
+    </tr>
+@*    these will render nested data, be sure to use nul conditional, to prevent errors if homeaddress is missing*@
+    <tr>
+        <td>
+            <th>City:</th>
+        </td>
+        <td>@Model.HomeAddress?.City</td>
+    </tr>     
+    <tr>
+        <td>
+            <th>Country:</th>
+        </td>
+        <td>@Model.HomeAddress?.Country</td>
+    </tr>    
+    <tr>
+        <td>
+            <th>Role:</th>
+        </td>
+        <td>@Model.Role</td>
+    </tr>
+</table>
+
+    

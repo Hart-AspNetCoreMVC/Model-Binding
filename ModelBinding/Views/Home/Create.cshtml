@@ -1,0 +1,72 @@
+﻿@model ModelBinding.Models.Person
+
+@{
+    ViewData["Title"] = "Create Person";
+    Layout = "_Layout";
+}
+
+<h2>Create</h2>
+
+@*each asp-for taghelper will bind with same property name in model*@
+@*nested data types use dot notation to bind to nested properties as in HomeAddress.City*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form class="m-1 p-1" asp-action="DisplaySummary" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PersonID" class="control-label"></label>
+                <input asp-for="PersonID" class="form-control" />
+                <span asp-validation-for="PersonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="HomeAddress.City" class="control-label"></label>
+                <input asp-for="HomeAddress.City" class="form-control" />
+                <span asp-validation-for="HomeAddress.City" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="HomeAddress.Country" class="control-label"></label>
+                <input asp-for="HomeAddress.Country" class="form-control" />
+                <span asp-validation-for="HomeAddress.Country" class="text-danger"></span>
+            </div>
+@*            <div class="form-group">*@
+@*                <label asp-for="BirthDate" class="control-label"></label>*@
+@*                <input asp-for="BirthDate" class="form-control" />*@
+@*                <span asp-validation-for="BirthDate" class="text-danger"></span>*@
+@*            </div>*@
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

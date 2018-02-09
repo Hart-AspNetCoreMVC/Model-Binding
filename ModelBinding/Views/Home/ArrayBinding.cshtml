@@ -1,0 +1,35 @@
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model string[]
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Array Bindin</title>
+</head>
+<body>
+<div>
+    @if (Model.Length == 0)
+    {
+        <form action="ArrayBinding" method="post">
+            <label for="name1">Name 1:</label>
+            <input type="text" name="names" id="name1" value=""/>
+            <label for="name2">Name 2:</label>
+            <input type="text" name="names" id="name2" value=""/>
+            <label for="name3">Name 3:</label>
+            <input type="text" name="names" id="name3" value=""/>
+            <input type="submit" name="name" value="submit" />
+        </form>
+    }
+    else
+    {
+        foreach (var name in Model)
+        {
+            <h2>@name</h2>
+        }
+    }
+
+
+</div>
+</body>
+</html>
